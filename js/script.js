@@ -39,7 +39,8 @@ const show = {
 
 const fire = (event) => {
   const target = event.target;
-  console.log(event);
+  // Далее идёт условие для проверки класса и тега цели клика 
+  // (домашнее задание + собственное решение бага(при клике на каркас таблицы ей присваивался класс miss и его стиль))
     if ((target.className === 'miss') === false && (target.tagName === 'TD')) {
       show.miss(target);
       play.updateData = 'shot';
