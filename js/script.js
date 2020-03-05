@@ -62,17 +62,14 @@ const show = {
 
 const fire = (event) => {
   const target = event.target;
-  // Далее идёт условие для проверки класса и тега цели клика 
-  // (домашнее задание + собственное решение бага(при клике на каркас таблицы ей присваивался класс miss и его стиль))
-  if ((target.className !== 'miss') && (target.tagName === 'TD') && (game.shipCount >= 1)){
-    show.miss(target);
-    play.updateData = 'shot';
-  }
+  if ((game.shipCount <= 0) || (target.className.length > 0) || (target.tagName !== 'TD')) {return false;}
+  show.miss(target);
+  play.updateData = 'shot';
   
   for (let i = 0; i < game.ships.length; i++) {
     const ship = game.ships[i];
     const index = ship.location.indexOf(target.id);
-    if (index >= 0) {
+    if ((index >= 0)) {
       show.hit(target);
       play.updateData = 'hit';
       ship.hit[index] = 'x';
