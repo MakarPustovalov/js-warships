@@ -156,7 +156,7 @@ const fire = (event) => {
 
 };
 
-const init = () => {
+const init = function() {
   enemy.addEventListener('click', fire);
   play.render();
   game.generateShip();
@@ -168,7 +168,6 @@ const init = () => {
     localStorage.setItem('seaBattleRecord', play.record);
     play.render();
   });
-  console.log(game);
 };
 
 init();
